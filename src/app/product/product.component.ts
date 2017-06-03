@@ -21,6 +21,7 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit() {
+    // HTTP请求的发送,是由subscribe方法来触发的,而不是上面的get方法触发的
     this.dataSource.subscribe(
       (data) => this.products = data
     );
