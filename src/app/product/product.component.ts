@@ -16,7 +16,7 @@ export class ProductComponent implements OnInit {
   // 自动注入Http模块,因为其provider已经在Http模块中声明并且import进来了
   constructor(private http: Http) {
     // 因为拿到的是Response类型,所以要调用json()来转化
-    this.dataSource = this.http.get('/products')
+    this.dataSource = this.http.get('/api/products')
       .map((res) => res.json());
   }
 
