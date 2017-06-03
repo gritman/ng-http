@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {Http} from '@angular/http';
+import {Http, Headers} from '@angular/http';
 import 'rxjs/Rx';
 
 @Component({
@@ -13,7 +13,9 @@ export class ProductTemplateComponent implements OnInit {
   products: Observable<any>;
 
   constructor(private http: Http) {
-    this.products = this.http.get('/api/products')
+    const myHeaders: Headers = new Headers();
+    myHeaders.append('Authorization', 'Basic 123456'); // 身份认证,放到Request Headers里面做请求的头
+    this.products = this.http.get('/api/products', {headers: myHeaders})
       .map((res) => res.json());
   }
 
